@@ -11,6 +11,7 @@
 }
 
 body {
+  width: 100vw;
   font-family: 'Poppins';
 }
 
@@ -19,18 +20,26 @@ body {
   margin: 0 auto;
 }
 
+@media (min-width: 1280px) {
+  .wrap {
+    width: 1080px;
+  }
+}
+
 .header {
   text-align: center;
   width: 100%;
   background-color: var(--bg-color);
-  margin: 15px 15px;
+  margin: 15px 0px;
 }
 
 .banner {
-  /*background-image: url('/imagens/Banner-1.png');*/
   background-repeat: no-repeat;
   background-size: cover;
   height: 278px;
+  img{
+    width: 100%;
+  }
 }
 
 .nav {
