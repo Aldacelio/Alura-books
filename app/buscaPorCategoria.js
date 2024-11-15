@@ -9,6 +9,11 @@ export function filtrarLivros(livros) {
         let livrosOrdenados = livros.sort((a, b) => a.preco - b.preco);
         renderLivros(livrosOrdenados);
       } else if (botaoClicado.value === "disponivel") {
+        let livrosFiltrados = livros.filter(
+          (livro) => livro.quantidade > 0
+        );
+        renderLivros(livrosFiltrados);
+        somaLivrosDisponiveis(livrosFiltrados);
       } else {
         let livrosFiltrados = livros.filter(
           (livro) => livro.categoria === botaoClicado.value
@@ -17,4 +22,17 @@ export function filtrarLivros(livros) {
       }
     });
   });
+}
+
+function somaLivrosDisponiveis(livros) {
+  let soma = 0;
+  livros.forEach((livro) => {
+    soma += livro.preco;
+  });
+  const valorElemento = document.getElementById("valor_total_livros_disponiveis");
+  valorElemento.innerHTML = `
+    <div class="livros__disponiveis">
+      <p>Todos os livros disponíveis por R$ <span id="valor">${soma.toFixed(2)}</span></p>
+    </div>
+  `
 }

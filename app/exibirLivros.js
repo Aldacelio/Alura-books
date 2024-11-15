@@ -1,6 +1,8 @@
 const livrosElemento = document.getElementById("livros");
+const valorElemento = document.getElementById("valor_total_livros_disponiveis");
 
 export function renderLivros(listaDeLivros) {
+  valorElemento.innerHTML = "";
   livrosElemento.innerHTML = "";
   listaDeLivros.forEach((livro) => {
     let disponibilidade = livro.quantidade > 0 ? "" : "indisponivel";
