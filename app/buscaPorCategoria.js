@@ -5,10 +5,16 @@ export function filtrarLivros(livros) {
   botoes.forEach((btn) => {
     btn.addEventListener("click", () => {
       const botaoClicado = document.getElementById(btn.id);
-      let livrosFiltrados = livros.filter(
-        (livro) => livro.categoria === botaoClicado.value
-      );
-      renderLivros(livrosFiltrados);
+      if(botaoClicado.value === "preco"){
+        let livrosOrdenados = livros.sort((a, b) => a.preco - b.preco);
+        renderLivros(livrosOrdenados);
+      } else if (botaoClicado.value === "disponivel") {
+      } else {
+        let livrosFiltrados = livros.filter(
+          (livro) => livro.categoria === botaoClicado.value
+        );
+        renderLivros(livrosFiltrados);
+      }
     });
   });
 }
