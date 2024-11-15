@@ -1,5 +1,6 @@
-import { renderLivros } from './exibirLivros.js';
-import { aplicarDesconto } from './descontoLivros.js';
+import { renderLivros } from "./exibirLivros.js";
+import { aplicarDesconto } from "./descontoLivros.js";
+import { filtrarLivros } from "./buscaPorCategoria.js";
 
 let livros = [];
 
@@ -12,11 +13,11 @@ async function getLivros() {
   try {
     const response = await fetch(endpointAPI);
     livros = await response.json();
-    //console.table(livros);
     let livrosDesconto = aplicarDesconto(livros);
-    console.table(livrosDesconto);
     renderLivros(livrosDesconto);
+    filtrarLivros(livrosDesconto);
   } catch (error) {
     console.log("Não conseguiu buscar os livros", error);
   }
 }
+
