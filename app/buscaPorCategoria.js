@@ -26,9 +26,7 @@ export function filtrarLivros(livros) {
 
 function somaLivrosDisponiveis(livros) {
   let soma = 0;
-  livros.forEach((livro) => {
-    soma += livro.preco;
-  });
+  soma = livros.reduce((acc, livro) => acc + livro.preco,0);
   const valorElemento = document.getElementById("valor_total_livros_disponiveis");
   valorElemento.innerHTML = `
     <div class="livros__disponiveis">
